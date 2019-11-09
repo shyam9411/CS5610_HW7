@@ -105,7 +105,7 @@ export function get_all_jobs() {
   });
 }
 
-export function submit_task(data) {
+export function submit_task(data, form) {
   console.log(data);
   post('/newTask', data)
   .then((resp) => {
@@ -115,6 +115,8 @@ export function submit_task(data) {
         type: 'NEW_TASK',
         data: resp.data,
       });
+
+      form.redirect("/worker");
   });
 }
 

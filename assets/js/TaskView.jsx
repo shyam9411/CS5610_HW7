@@ -52,11 +52,15 @@ class TaskView extends React.Component {
         
         
         if (data.hours < 9 && data.hours > 0) {
-            submit_task(data);
-            this.setState({path: "/worker"});
+            submit_task(data, this);
+            // this.setState({path: "/worker"});
         }
         else
             this.setState({errorFound: true})
+  }
+
+  redirect(path) {
+      this.setState({path: path});
   }
 
   render() {

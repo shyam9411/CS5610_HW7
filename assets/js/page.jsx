@@ -7,6 +7,7 @@ import WorkerLogin from './WorkerLogin';
 import { Provider, connect } from 'react-redux';
 import WorkerView from './workerView';
 import ManagerView from './ManagerView';
+import TaskView from './TaskView';
 
 import { Redirect } from 'react-router';
 
@@ -54,6 +55,10 @@ function Page(props) {
 
           <Route exact path="/worker">
             <WorkerView/>
+          </Route>
+
+          <Route exact path="/newTask">
+            <TaskView />
           </Route>
 
           <Route exact path="/manager">

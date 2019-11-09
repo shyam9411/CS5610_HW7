@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 
 import { get_tasks_sheet } from './ajax';
-import TaskView from './TaskView';
+
+import { Redirect } from 'react-router';
 
 function state2props(state) {
   return {data: state.forms.tasksSheet};
@@ -14,7 +15,7 @@ class WorkerView extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      taskView: false
+      path: null
     }
 
     this.createNewTask = this.createNewTask.bind(this);
@@ -22,7 +23,7 @@ class WorkerView extends React.Component {
   }
 
   createNewTask() {
-    this.setState({taskView: true});
+    this.setState({path: "/newTask"});
   }
 
   render() {
@@ -32,8 +33,8 @@ class WorkerView extends React.Component {
       error_msg = <Alert variant="danger">{ errors }</Alert>;
     }
 
-    if (this.state.taskView)
-      return <TaskView/>;
+    if (this.state.path != null)
+      return <Redirect to={this.state.path} />;
 
     let dataRow = [];
     if (data != null) {
