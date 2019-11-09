@@ -34,7 +34,7 @@ defmodule TimesheetSpaWeb.Router do
     resources "/tasksindex", TaskController, only: [:index]
     resources "/jobsindex", JobController, only: [:index]
     resources "/newTask", TaskController, only: [:create, :show]
-    resources "/updateTask", TaskController, only: [:create, :update]
+    post "/updateTask", TaskController, :update
   end
 
   # Other scopes may use custom stacks.

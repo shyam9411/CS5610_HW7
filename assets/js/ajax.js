@@ -120,7 +120,7 @@ export function submit_task(data, form) {
   });
 }
 
-export function update_task(data) {
+export function update_task(data, completeData) {
   console.log(data);
   post('/updateTask', data)
   .then((resp) => {
@@ -128,7 +128,7 @@ export function update_task(data) {
     localStorage.setItem('updateTask', JSON.stringify(resp));
       store.dispatch({
         type: 'TASKS_SHEET',
-        data: resp.data,
+        data: completeData,
       });
   });
 }

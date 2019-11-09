@@ -27,8 +27,12 @@ class ManagerView extends React.Component {
     }
 
     task = Object.assign({}, task, {status: true});
-    console.log(task);
-    update_task(task);
+    this.tasks.set(task.id, task);
+    // this.props.dispatch({
+    //   type: 'TASKS_SHEET',
+    //   data: tasks,
+    // });
+    update_task(task, this.tasks);
   }
 
   render() {
@@ -46,7 +50,7 @@ class ManagerView extends React.Component {
           <td>{value.id}</td>
           <td>{value.hours}</td>
           <td>{value.description}</td>
-          <td>{(value.status) ? <div className="text-success">Approved</div> : <a href="#" onClick={() => this.handleApproval(value.id)}>Approve request</a>}</td>
+          <td>{(value.status) ? <div className="text-success">Approved</div> : <div className="" onClick={() => this.handleApproval(value.id)}>Approve request</div>}</td>
         </tr>)
     }
 
