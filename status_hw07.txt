@@ -1,0 +1,39 @@
+
+Web Dev Fall 2019 HW07 Status
+
+Answer the following questions:
+
+
+1. What's your name?
+Shyam Kumar
+
+
+
+2. What's the URL of the github repo with your work for this HW?
+https://github.com/shyam9411/CS5610_HW7.git
+
+
+
+3. What's the version number of your github release?
+1.0.0
+
+
+4. What's the URL that you deployed to?
+http://time2.neu-webapps.space
+
+
+5. Is your app functionality complete? If not, what's missing?
+The app doesn't support redirecting back to the index page of worker and manager upon taking corresponding actions on the tasks. Also the approval of task by a manager would create a newer task instead of updating the existing one. This is a bug currently in the timesheet app and would be addressed in the future.
+
+
+6. Is your app properly deployed? If not, what went wrong?
+The app is deployed completely to the mentioned url.
+
+
+
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Development
+ - Deployment
+ - Submission
+
