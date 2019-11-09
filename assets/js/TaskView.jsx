@@ -5,6 +5,8 @@ import { Form, Button, Alert } from 'react-bootstrap';
 
 import { submit_task, get_all_jobs } from './ajax';
 
+import { Redirect } from 'react-router';
+
 function state2props(state) {
   return {data: state.forms.newTask, jobs: state.forms.jobsSheet};
 }
@@ -13,7 +15,8 @@ class TaskView extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-        errorFound: false
+        errorFound: false,
+        path: null
     }
 
     this.jobs = null
@@ -48,8 +51,10 @@ class TaskView extends React.Component {
             }
         
         
-        if (data.hours < 9 && data.hours > 0)
-            submit_task(this);
+        if (data.hours < 9 && data.hours > 0) {
+            submit_task(data);
+            this.setState({path: "/worker"});
+        }
         else
             this.setState({errorFound: true})
   }
@@ -60,7 +65,11 @@ class TaskView extends React.Component {
       let errors = null;
 
       if (this.state.errorFound) {
-          errors = <Alert variant="danger">{ errors }</Alert>;
+          errors = <Alert variant="danger mt-5">Invalid submission. Check the entires made</Alert>;
+      }
+
+      if (this.state.path != null) {
+          return <Redirect to={this.state.path}/>;
       }
 
       return (
@@ -78,7 +87,7 @@ class TaskView extends React.Component {
                 <Form.Group controlId="hours">
                     <Form.Label>Hours Spent</Form.Label>
                     <Form.Control type="text" onChange={
-                        (ev) => this.changed({hours: ev.target.value})} />
+                        (ev) => this.changed({hours: parseInt(ev.target.value)})} />
                 </Form.Group>
                 <Form.Group controlId="Description">
                     <Form.Label>Description</Form.Label>

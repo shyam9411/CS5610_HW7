@@ -78,7 +78,7 @@ function Page(props) {
         <div>
           <Nav>
             <Nav.Item>
-              <p className="text-light py-2">User: {session.user_name}</p>
+              <p className="text-light py-2 mt-2">User: {session.user_name}</p>
             </Nav.Item>
             <Nav.Item>
               <NavLink to="/" exact activeClassName="active" className="nav-link">

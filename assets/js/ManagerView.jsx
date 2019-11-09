@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 
-import { get_tasks_sheet, submit_task } from './ajax';
+import { get_tasks_sheet, update_task } from './ajax';
 
 function state2props(state) {
   return {data: state.forms.tasksSheet};
@@ -26,12 +26,9 @@ class ManagerView extends React.Component {
       }
     }
 
-    task = Object.assign({}, task, {status: true})
-    this.props.dispatch({
-      type: 'NEW_TASK',
-      data: task,
-    });
-    submit_task();
+    task = Object.assign({}, task, {status: true});
+    console.log(task);
+    update_task(task);
   }
 
   render() {

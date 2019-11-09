@@ -105,16 +105,27 @@ export function get_all_jobs() {
   });
 }
 
-export function submit_task() {
-  let state = store.getState();
-  let data = state.forms.newTask;
-
+export function submit_task(data) {
+  console.log(data);
   post('/newTask', data)
   .then((resp) => {
     console.log(resp);
     localStorage.setItem('newTask', JSON.stringify(resp));
       store.dispatch({
         type: 'NEW_TASK',
+        data: resp.data,
+      });
+  });
+}
+
+export function update_task(data) {
+  console.log(data);
+  post('/updateTask', data)
+  .then((resp) => {
+    console.log(resp);
+    localStorage.setItem('updateTask', JSON.stringify(resp));
+      store.dispatch({
+        type: 'TASKS_SHEET',
         data: resp.data,
       });
   });

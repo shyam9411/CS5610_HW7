@@ -50,9 +50,18 @@ function jobsSheet(st0 = new Map(), action) {
     }
 }
 
-function newTask(st0 = {job_id: 1, hours: 0, description: "", worker_id: 0, status: false}, action) {
+function newTask(st0 = {job_id: 1, hours: 0, description: "", worker_id: 1, status: false}, action) {
     switch(action.type) {
         case 'NEW_TASK':
+            return Object.assign({}, st0, action.data);
+        default:
+            return st0;
+    }
+}
+
+function updateTask(st0 = {job_id: 1, hours: 0, description: "", worker_id: 1, status: false, id: 0}, action) {
+    switch(action.type) {
+        case 'UPDATE_TASK':
             return Object.assign({}, st0, action.data);
         default:
             return st0;
@@ -78,7 +87,8 @@ function forms(st0, action) {
         workerLogin,
         jobsSheet,
         tasksSheet,
-        newTask
+        newTask,
+        updateTask
     });
     return reducer(st0, action);
   }

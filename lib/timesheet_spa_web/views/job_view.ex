@@ -16,6 +16,7 @@ defmodule TimesheetSpaWeb.JobView do
       description: job.description,
       code: job.code,
       code: job.code,
-      name: job.name}
+      name: job.name,
+      manager_id: job.manager_id}
   end
 end

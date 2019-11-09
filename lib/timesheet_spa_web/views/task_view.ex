@@ -14,6 +14,9 @@ defmodule TimesheetSpaWeb.TaskView do
     %{id: task.id,
       status: task.status,
       hours: task.hours,
-      description: task.description}
+      description: task.description,
+      job_id: task.job_id,
+      worker_id: task.worker_id
+    }
   end
 end

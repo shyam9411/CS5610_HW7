@@ -11,8 +11,8 @@ defmodule TimesheetSpaWeb.TaskController do
     render(conn, "index.json", tasks: tasks)
   end
 
-  def create(conn, %{"task" => task_params}) do
-    with {:ok, %Task{} = task} <- Tasks.create_task(task_params) do
+  def create(conn, %{"description" => description, "status" => status, "job_id" => job_id, "worker_id" => worker_id, "hours" => hours}) do
+    with {:ok, %Task{} = task} <- Tasks.create_task(%{"description" => description, "status" => status, "job_id" => job_id, "worker_id" => worker_id, "hours" => hours}) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.task_path(conn, :show, task))
@@ -25,9 +25,9 @@ defmodule TimesheetSpaWeb.TaskController do
     render(conn, "show.json", task: task)
   end
 
-  def update(conn, %{"id" => id, "task" => task_params}) do
+  def update(conn, %{"description" => description, "status" => status, "job_id" => job_id, "worker_id" => worker_id, "hours" => hours, "id" => id}) do
     task = Tasks.get_task!(id)
-
+    task_params = %{"description" => description, "status" => status, "job_id" => job_id, "worker_id" => worker_id, "hours" => hours, "id" => id}
     with {:ok, %Task{} = task} <- Tasks.update_task(task, task_params) do
       render(conn, "show.json", task: task)
     end
