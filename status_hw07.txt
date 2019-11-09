@@ -23,7 +23,7 @@ http://time2.neu-webapps.space
 
 
 5. Is your app functionality complete? If not, what's missing?
-The app doesn't support redirecting back to the index page of worker and manager upon taking corresponding actions on the tasks. Also the approval of task by a manager would create a newer task instead of updating the existing one. This is a bug currently in the timesheet app and would be addressed in the future.
+The app doesn't support redirecting back to the index page of manager upon taking corresponding actions on the tasks. Also the approval of task by a manager would create a newer task instead of updating the existing one. This is a bug currently in the timesheet app and would be addressed in the future.
 
 
 6. Is your app properly deployed? If not, what went wrong?
